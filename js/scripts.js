@@ -10,8 +10,19 @@ $(document).ready(function(){
         console.log(listItems);
         $("#groceryForm").trigger("reset");
 
-    console.log(groceries);
+        $("#makeList").unbind('submit').submit(function(event) {
+          console.log(listItems);
+          listItems.forEach(function(listItem){
+            $("#list ul").append("<li>" + listItem + "</li>");
+          });
+          $("#list").show();
+          $("#groceryForm").hide();
+          $("#makeList").hide();
+          event.preventDefault();
+        });
+
 
     event.preventDefault();
+    return listItems;
   });
 });
